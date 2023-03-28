@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useEffect, useState } from "react";
+import { MovieList } from "../src/MovieList/MovieList";
+import { Header } from "../src/Header/Header";
+import { SearchTitle } from "../src/SearchTitle/SearchTitle";
 
 function App() {
+  const [movieList, setMovieList] = useState([]);
+
+  useEffect(() => {
+    fetch(
+      //try /movies or /reviews
+      `https://us-central1-beacon-fe-worksample-api.cloudfunctions.net/app/movies`
+    )
+      .then((resp) => resp.json())
+      .then((resp) => resp.sort())
+      .then((resp) => setMovieList(resp));
+  }, []);
+
+  // console.log(resp.map((movie) => movie.title).sort());
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <SearchTitle onSearch={(e) => console.log(e)} />
+      <MovieList movieList={movieList} />
     </div>
   );
 }
