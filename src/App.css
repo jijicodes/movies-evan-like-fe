@@ -8,4 +8,27 @@
 
 .movieRow {
   font-size: 12px;
+  padding-left: 0.7rem;
+  cursor: pointer;
+}
+
+.searchSetting {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid;
+  border-color: rgb(227, 223, 223);
+  font-size: 14px;
+  padding: 10px;
+  }
+
+.search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 7px;
+}
+.description {
+  background-color: rgb(230, 230, 229);
+  padding: 15px;
 }
